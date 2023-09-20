@@ -16,7 +16,7 @@ describe("Card Test", () => {
         expect(screen.getByText(/Fetching.../i)).toBeInTheDocument();
     });
 
-    it("should displays Fetching when the data is undefined", () => {
+    it("should displays Name: Luke Skywalker", () => {
         useFetchPersonNameMock.mockReturnValue('Name: Luke Skywalker');
 
         render(<Card />);
