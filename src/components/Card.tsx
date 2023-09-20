@@ -1,22 +1,14 @@
-import { useEffect, useState } from "react"
+import React from 'react';
+import useFetchPersonName from "./useFetchPerson"
 
 const Card = () => {
+    const personName = useFetchPersonName("https://swapi.dev/api/people/1")
 
-    const [personName, setPersonName] = useState()
+    if (!personName) {
+        return <>Fetching...</>;
+    }
 
-    useEffect(() => {
-        const fetchPerson = async () => {
-            const response = await fetch("https://swapi.dev/api/people/1")
-            const data = await response.json();
-            console.log(data)
-            setPersonName(data.name)
-        }
-        fetchPerson()
-    }, [])
-
-    return (
-        <>{personName}</>
-    )
+    return (<>Name: {personName}</>)
 }
 
 export default Card
